@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frankie — 潜入·探索·解密</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+
+      <div id="hud">
+        <div id="detection-wrap">
+          <div id="detection-label">警觉度</div>
+          <div id="detection-bar"><div id="detection-fill"></div></div>
+        </div>
+        <div id="objective">目标: 靠近前台 NPC 交谈,找到进入后区的方法</div>
+        <div id="prompt" class="hidden"></div>
+      </div>
+
+      <div id="dialogue-box" class="hidden">
+        <div id="dialogue-speaker"></div>
+        <div id="dialogue-text"></div>
+        <div id="dialogue-choices"></div>
+      </div>
+
+      <div id="caught-overlay" class="hidden">
+        <div id="caught-text">你被发现了!</div>
+        <div id="caught-sub">按 R 重新开始</div>
+      </div>
+
+      <div id="crosshair-help">
+        WASD 移动 · 鼠标拖动视角 · E 交互 · Shift 减速潜行
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
