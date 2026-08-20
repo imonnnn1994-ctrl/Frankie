@@ -9,6 +9,9 @@ export class HUD {
     this.objective = document.getElementById("objective");
     this.prompt = document.getElementById("prompt");
     this.caughtOverlay = document.getElementById("caught-overlay");
+    this.caughtText = document.getElementById("caught-text");
+    this.caughtSub = document.getElementById("caught-sub");
+    this.restartBtn = document.getElementById("btn-restart");
     gameState.onChange((gs) => this.render(gs));
     this.render(gameState);
   }
@@ -25,8 +28,18 @@ export class HUD {
   render(gs) {
     this.fill.style.width = `${gs.detection}%`;
 
-    if (gs.phase === Phase.CAUGHT) {
+    if (gs.phase === Phase.CAUGHT || gs.phase === Phase.WON) {
       this.caughtOverlay.classList.remove("hidden");
+      this.restartBtn.classList.remove("hidden");
+      if (gs.phase === Phase.CAUGHT) {
+        this.caughtOverlay.classList.remove("won");
+        this.caughtText.textContent = "你被发现了!";
+        this.caughtSub.textContent = "按 R 或点击下方按钮重新开始";
+      } else {
+        this.caughtOverlay.classList.add("won");
+        this.caughtText.textContent = "成功逃脱!";
+        this.caughtSub.textContent = "你穿过了后门 · 按 R 或点击下方按钮重新开始";
+      }
     } else {
       this.caughtOverlay.classList.add("hidden");
     }

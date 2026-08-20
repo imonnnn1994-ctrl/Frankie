@@ -2,7 +2,10 @@
 <html lang="zh">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
     <title>Frankie — 潜入·探索·解密</title>
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="/src/style.css" />
@@ -29,10 +32,21 @@
       <div id="caught-overlay" class="hidden">
         <div id="caught-text">你被发现了!</div>
         <div id="caught-sub">按 R 重新开始</div>
+        <button id="btn-restart" class="hidden">重新开始</button>
       </div>
 
       <div id="crosshair-help">
         WASD 移动 · 鼠标拖动视角 · E 交互 · Shift 减速潜行
+      </div>
+
+      <div id="touch-controls" class="hidden">
+        <div id="joystick-base">
+          <div id="joystick-knob"></div>
+        </div>
+        <div id="touch-buttons">
+          <button id="btn-sneak" class="touch-btn">潜行</button>
+          <button id="btn-interact" class="touch-btn touch-btn-primary">E</button>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/main.js"></script>

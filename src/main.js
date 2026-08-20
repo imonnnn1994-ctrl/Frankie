@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { InputManager } from "./InputManager.js";
+import { TouchControls } from "./TouchControls.js";
 import { GameState, Phase } from "./GameState.js";
 import { Player } from "./Player.js";
 import { Guard } from "./Guard.js";
@@ -25,6 +26,7 @@ const CAM_HEIGHT = 3.4;
 
 const gameState = new GameState();
 const input = new InputManager(canvas);
+const touchControls = new TouchControls(input);
 const level = buildLevel(scene);
 const player = new Player(scene, level.spawn);
 const guard = new Guard(scene, level.waypoints, level.occluders);
@@ -189,5 +191,14 @@ function animate() {
 animate();
 
 if (import.meta.env.DEV) {
-  window.__game = { scene, camera, player, guard, gameState, level, interactables };
+  window.__game = {
+    scene,
+    camera,
+    player,
+    guard,
+    gameState,
+    level,
+    interactables,
+    getCamYaw: () => camYaw,
+  };
 }

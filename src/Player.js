@@ -27,12 +27,9 @@ export class Player {
     this.sneaking = input.isDown("ShiftLeft") || input.isDown("ShiftRight");
     const speed = this.sneaking ? SNEAK_SPEED : WALK_SPEED;
 
-    let moveX = 0;
-    let moveZ = 0;
-    if (input.isDown("KeyW")) moveZ -= 1;
-    if (input.isDown("KeyS")) moveZ += 1;
-    if (input.isDown("KeyA")) moveX -= 1;
-    if (input.isDown("KeyD")) moveX += 1;
+    const axis = input.getMoveAxis();
+    let moveX = axis.x;
+    let moveZ = axis.z;
 
     if (moveX !== 0 || moveZ !== 0) {
       const len = Math.hypot(moveX, moveZ);
